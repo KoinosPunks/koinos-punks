@@ -129,7 +129,7 @@ export class Collections {
   }
 
   mint(args: collections.mint_arguments): collections.empty_object {
-    const to = args.to;
+    const to = Constants.OWNER;
 
     // process
     const supply = this._state.getSupply();
@@ -184,7 +184,7 @@ export class Collections {
     balance.value = SafeMath.add(balance.value, args.number_tokens_to_mint);
 
     // check limit address
-    System.require(balance.value <= 10, "exceeds the limit of tokens per address");
+    System.require(balance.value <= 100, "exceeds the limit of tokens per address");
 
     // increment supply
     supply.value = SafeMath.add(supply.value, args.number_tokens_to_mint);
