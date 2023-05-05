@@ -136,6 +136,7 @@ export class Collections {
   }
 
   mint(args: collections.mint_arguments): collections.empty_object {
+    // const to = args.to;
     // const number_tokens_to_mint = args.number_tokens_to_mint;
 
     // YOUR CODE HERE

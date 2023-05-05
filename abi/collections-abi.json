@@ -340,9 +340,16 @@
                     },
                     "mint_arguments": {
                         "fields": {
+                            "to": {
+                                "type": "bytes",
+                                "id": 1,
+                                "options": {
+                                    "(koinos.btype)": "ADDRESS"
+                                }
+                            },
                             "number_tokens_to_mint": {
                                 "type": "uint64",
-                                "id": 1,
+                                "id": 2,
                                 "options": {
                                     "jstype": "JS_STRING"
                                 }

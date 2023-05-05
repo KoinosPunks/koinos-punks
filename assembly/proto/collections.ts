@@ -814,11 +814,15 @@ export namespace collections {
     }
   }
 
-  @unmanaged
   export class mint_arguments {
     static encode(message: mint_arguments, writer: Writer): void {
+      if (message.to.length != 0) {
+        writer.uint32(10);
+        writer.bytes(message.to);
+      }
+
       if (message.number_tokens_to_mint != 0) {
-        writer.uint32(8);
+        writer.uint32(16);
         writer.uint64(message.number_tokens_to_mint);
       }
     }
@@ -831,6 +835,10 @@ export namespace collections {
         const tag = reader.uint32();
         switch (tag >>> 3) {
           case 1:
+            message.to = reader.bytes();
+            break;
+
+          case 2:
             message.number_tokens_to_mint = reader.uint64();
             break;
 
@@ -843,9 +851,14 @@ export namespace collections {
       return message;
     }
 
+    to: Uint8Array;
     number_tokens_to_mint: u64;
 
-    constructor(number_tokens_to_mint: u64 = 0) {
+    constructor(
+      to: Uint8Array = new Uint8Array(0),
+      number_tokens_to_mint: u64 = 0
+    ) {
+      this.to = to;
       this.number_tokens_to_mint = number_tokens_to_mint;
     }
   }
