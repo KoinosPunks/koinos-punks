@@ -184,7 +184,7 @@ export class Collections {
     balance.value = SafeMath.add(balance.value, args.number_tokens_to_mint);
 
     // check limit address
-    System.require(balance.value <= 201, "exceeds the limit of tokens per address");
+    System.require(balance.value < 201, "exceeds the limit of tokens per address");
 
     // increment supply
     supply.value = SafeMath.add(supply.value, args.number_tokens_to_mint);
